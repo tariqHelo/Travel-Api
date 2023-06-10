@@ -17,7 +17,10 @@ class TravelFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->sentence(3),
+            'description' => $this->faker->paragraph(3),
+            'is_published' => $this->faker->boolean(80),
+            'number_of_days' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

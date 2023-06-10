@@ -16,8 +16,16 @@ class TourFactory extends Factory
      */
     public function definition(): array
     {
+        //get random travel id from travel table
+        $travelIds = \DB::table('travels')->inRandomOrder()->pluck('id')->toArray();
         return [
-            //
+            //get random travel id from travel table
+            'travel_id' => $this->faker->randomElement($travelIds),
+            'name' => $this->faker->sentence(3),
+            'start_date' => $this->faker->dateTimeBetween('now', '+1 years'),
+            'end_date' => $this->faker->dateTimeBetween('+1 years', '+2 years'),
+            'price' => $this->faker->numberBetween(1000, 10000),
+
         ];
     }
 }
