@@ -12,6 +12,12 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        //add roles Admin and Editor
+        $roles = ['Admin', 'Editor'];
+
+        foreach ($roles as $role) {
+            \App\Models\Role::create(['name' => $role]);
+        }
+        
     }
 }

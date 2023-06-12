@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         // \App\Models\Travel::factory(10)->create();
-           \App\Models\Tour::factory(10)->create();
+          // \App\Models\Tour::factory(10)->create();
 
         
 
@@ -22,5 +22,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        $this->call([
+            RoleSeeder::class,
+        ]);
     }
 }
