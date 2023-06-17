@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+
 class Travel extends Model
 {
-    use HasFactory, HasUlids;
+    use HasFactory, HasUuids;
 
     protected $table='travels';
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Travel;
 use Illuminate\Http\Request;
 use App\Http\Requests\TourRequest;
+use App\Http\Resources\TourResource;
 
 class TourController extends Controller
 {
@@ -14,8 +15,8 @@ class TourController extends Controller
         $tour = $travel->tours()->create($request->validated());
 
         return response()->json([
-            'success' => true,
-            'data' => $tour,
-        ]);
+            'message' => 'Tour created successfully',
+            'data' => new TourResource($tour)
+        ], 201);
     }
 }

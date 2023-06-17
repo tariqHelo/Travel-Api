@@ -31,7 +31,7 @@ Route::get('travels', [TravelController::class, 'index']);
 Route::get('travels/{travel:slug}/tours', [TourController::class, 'index']);
 
 
-Route::prefix('admin')->middleware(['auth:sanctum', 'role:admin'])->group(function () {
+Route::prefix('admin')->middleware(['auth:sanctum', 'role:Admin'])->group(function () {
     Route::apiResource('travels', Admin\TravelController::class);
     Route::apiResource('travels/{travel}/tours', Admin\TourController::class);
 });

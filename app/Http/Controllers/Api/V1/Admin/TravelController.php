@@ -10,12 +10,22 @@ use Illuminate\Http\Request;
 
 class TravelController extends Controller
 {
+
+    //invokable function for index
+
+    public function __invoke()
+    {
+        return TravelResource::collection(Travel::all());
+    }
     
 
     public function store(TravelRequest $request)
     {
-       $travel = Travel::create($request->validated());
-
-       return TravelResource::make($travel);
+        $travel = Travel::create($request->validated());
+ 
+        return response()->json([
+            'message' => 'Travel created successfully',
+            'data' => new TravelResource($travel)
+        ], 201);
     }
 }

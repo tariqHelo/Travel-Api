@@ -20,11 +20,10 @@ class RoleMiddleware
             abort(401);
         }
  
-        //check if user has the role This is just an example
-        if (! auth()->user()->hasRole($role)) {
+        if (! auth()->user()->roles()->where('name', $role)->exists()) {
             abort(403);
         }
-
+ 
         return $next($request);
     }
 }
