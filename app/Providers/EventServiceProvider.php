@@ -4,13 +4,13 @@ namespace App\Providers;
 
 use App\Models\Tour;
 use App\Models\Travel;
+use App\Observers\TourObserver;
+use App\Observers\TravelObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
-use OCILob;
-use App\Observers\TravelObserver;
-use App\Observers\TourObserver;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -29,8 +29,8 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-       Travel::observe(TravelObserver::class);
-       Tour::observe(TourObserver::class);
+        Travel::observe(TravelObserver::class);
+        Tour::observe(TourObserver::class);
     }
 
     /**

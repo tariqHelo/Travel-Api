@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Travel;
-use Illuminate\Http\Request;
 use App\Http\Requests\TourRequest;
 use App\Http\Resources\TourResource;
+use App\Models\Travel;
 
 class TourController extends Controller
 {
@@ -16,7 +15,7 @@ class TourController extends Controller
 
         return response()->json([
             'message' => 'Tour created successfully',
-            'data' => new TourResource($tour)
+            'data' => new TourResource($tour),
         ], 201);
     }
 }

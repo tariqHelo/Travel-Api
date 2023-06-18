@@ -18,6 +18,7 @@ class TourFactory extends Factory
     {
         //get random travel id from travel table
         $travelIds = \DB::table('travels')->inRandomOrder()->pluck('id')->toArray();
+
         return [
             //get random travel id from travel table
             'travel_id' => $this->faker->randomElement($travelIds),

@@ -2,11 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-use  App\Models\User;
+
 class CreateUserCommand extends Command
 {
     /**
@@ -37,9 +38,10 @@ class CreateUserCommand extends Command
         //check if role exists
         $role = \App\Models\Role::where('name', $roleName)->first();
 
-        if (!$role) {
+        if (! $role) {
             $this->error('Role does not exist');
-            return -1 ;
+
+            return -1;
         }
 
         //validation rules
@@ -54,11 +56,9 @@ class CreateUserCommand extends Command
 
         if ($validator->fails()) {
             $this->error($validator->errors()->first());
-            return -1 ;
+
+            return -1;
         }
-
-
-      
 
         \DB::transaction(function () use ($user, $role) {
             $newUser = User::create($user + ['password' => Hash::make($user['password'])]);
@@ -68,7 +68,7 @@ class CreateUserCommand extends Command
         // $newUser = \App\Models\User::create($user);
         // $newUser->roles()->attach($role->id);
 
-        $this->info('User ' . $user['name'] . ' created');
+        $this->info('User '.$user['name'].' created');
 
     }
 }

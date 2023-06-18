@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ToursListRequest extends FormRequest
 {
@@ -32,10 +32,9 @@ class ToursListRequest extends FormRequest
         ];
     }
 
-
-
-    public function messages(){
-        return[
+    public function messages()
+    {
+        return [
             'sortBy' => "The 'sortBy' parameter accepts only 'price' value",
             'sortOrder' => "The 'sortOrder' parameter accepts only 'asc' and 'desc' values",
         ];
